@@ -6,6 +6,21 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <ApplicationIcon>Assets/icon.ico</ApplicationIcon>
+    
+    <!-- Self-contained deployment settings -->
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>false</PublishSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>partial</TrimMode>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    
+    <!-- App metadata for packaging -->
+    <Version>1.0.0</Version>
+    <Authors>Boot Selector Team</Authors>
+    <Company>Boot Selector</Company>
+    <Product>Boot Selector</Product>
+    <Description>Cross-platform boot entry selector for EFI/UEFI systems</Description>
+    <Copyright>Copyright © 2024</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

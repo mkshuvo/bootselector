@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Boot Selector
+Comment=Select which OS to boot on next restart
+Exec=/opt/bootselector/bootselector
+Icon=/opt/bootselector/icon.png
+Terminal=false
+Type=Application
+Categories=System;Settings;
+Keywords=boot;efi;uefi;grub;reboot;
+StartupWMClass=bootselector
