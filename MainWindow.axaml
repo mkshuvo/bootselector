@@ -1,0 +1,152 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
+        x:Class="bootselector.MainWindow"
+        Title="Boot Selector"
+        Icon="/Assets/icon.ico"
+        Width="500" Height="400"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        SystemDecorations="None"
+        Background="Transparent"
+        TransparencyLevelHint="AcrylicBlur">
+    
+    <Window.Styles>
+        <Style Selector="Button.primary">
+            <Setter Property="Background" Value="#0078D4"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="24,12"/>
+            <Setter Property="CornerRadius" Value="8"/>
+        </Style>
+        <Style Selector="Button.primary:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#1084D8"/>
+        </Style>
+        <Style Selector="Button.primary:pressed /template/ ContentPresenter">
+            <Setter Property="Background" Value="#006CBE"/>
+        </Style>
+        
+        <Style Selector="Button.secondary">
+            <Setter Property="Background" Value="#2D2D2D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="16,10"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+        <Style Selector="Button.secondary:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#3D3D3D"/>
+        </Style>
+        
+        <Style Selector="ComboBox">
+            <Setter Property="Background" Value="#2D2D2D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="12,10"/>
+        </Style>
+    </Window.Styles>
+    
+    <Border CornerRadius="12" ClipToBounds="True">
+        <Panel>
+            <!-- Acrylic Background -->
+            <ExperimentalAcrylicBorder IsHitTestVisible="False">
+                <ExperimentalAcrylicBorder.Material>
+                    <ExperimentalAcrylicMaterial
+                        BackgroundSource="Digger"
+                        TintColor="#1A1A2E"
+                        TintOpacity="0.85"
+                        MaterialOpacity="0.65"/>
+                </ExperimentalAcrylicBorder.Material>
+            </ExperimentalAcrylicBorder>
+            
+            <!-- Solid fallback background -->
+            <Border Background="#1A1A2E" Opacity="0.95" IsHitTestVisible="False"/>
+            
+            <!-- Main Content -->
+            <DockPanel Margin="0">
+                <!-- Custom Title Bar -->
+                <Border DockPanel.Dock="Top" Height="40" Background="#16213E" 
+                        PointerPressed="TitleBar_PointerPressed">
+                    <Grid>
+                        <TextBlock Text="⚡ Boot Selector" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Left"
+                                   Margin="16,0,0,0"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="#E0E0E0"/>
+                        
+                        <StackPanel Orientation="Horizontal" 
+                                    HorizontalAlignment="Right" 
+                                    Spacing="4"
+                                    Margin="0,0,8,0">
+                            <Button x:Name="MinimizeButton" 
+                                    Content="─" 
+                                    Width="32" Height="28"
+                                    FontSize="12"
+                                    Background="Transparent"
+                                    Foreground="#A0A0A0"
+                                    Click="MinimizeButton_Click"/>
+                            <Button x:Name="CloseButton" 
+                                    Content="✕" 
+                                    Width="32" Height="28"
+                                    FontSize="12"
+                                    Background="Transparent"
+                                    Foreground="#A0A0A0"
+                                    Click="CloseButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                
+                <!-- Content Area -->
+                <Grid Margin="32,24,32,32" RowDefinitions="Auto,Auto,*,Auto">
+                    
+                    <!-- Header -->
+                    <StackPanel Grid.Row="0" Spacing="8" Margin="0,0,0,24">
+                        <TextBlock Text="Select Boot Target"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+                        <TextBlock x:Name="PlatformLabel"
+                                   Text="Platform: Detecting..."
+                                   FontSize="13"
+                                   Foreground="#808080"/>
+                    </StackPanel>
+                    
+                    <!-- Boot Entry Selection -->
+                    <StackPanel Grid.Row="1" Spacing="12" Margin="0,0,0,20">
+                        <TextBlock Text="Boot Entry"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="#C0C0C0"/>
+                        <ComboBox x:Name="BootEntryComboBox"
+                                  HorizontalAlignment="Stretch"
+                                  Height="44"
+                                  FontSize="14"
+                                  PlaceholderText="Select a boot entry..."/>
+                        <Button x:Name="RefreshButton"
+                                Content="↻ Refresh List"
+                                Classes="secondary"
+                                HorizontalAlignment="Left"
+                                Click="RefreshButton_Click"/>
+                    </StackPanel>
+                    
+                    <!-- Action Buttons -->
+                    <StackPanel Grid.Row="3" 
+                                Orientation="Horizontal" 
+                                Spacing="12"
+                                HorizontalAlignment="Right">
+                        <Button x:Name="SetNextBootButton"
+                                Content="Set Next Boot"
+                                Classes="secondary"
+                                Click="SetNextBootButton_Click"/>
+                        <Button x:Name="RestartButton"
+                                Content="🔄 Restart to Selected Boot"
+                                Classes="primary"
+                                Click="RestartButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </DockPanel>
+        </Panel>
+    </Border>
+</Window>

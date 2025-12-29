@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A1A2E"/>
+      <stop offset="100%" style="stop-color:#16213E"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0078D4"/>
+      <stop offset="100%" style="stop-color:#00B4D8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" rx="80" ry="80" fill="url(#bg)"/>
+  
+  <!-- Power symbol circle -->
+  <circle cx="256" cy="276" r="120" fill="none" stroke="url(#accent)" stroke-width="24" stroke-linecap="round" stroke-dasharray="300 100"/>
+  
+  <!-- Power symbol line -->
+  <line x1="256" y1="156" x2="256" y2="276" stroke="url(#accent)" stroke-width="24" stroke-linecap="round"/>
+  
+  <!-- Boot arrow/selector -->
+  <path d="M 340 380 L 400 420 L 340 460 Z" fill="url(#accent)"/>
+  <rect x="180" y="405" width="160" height="30" rx="15" fill="url(#accent)"/>
+</svg>
