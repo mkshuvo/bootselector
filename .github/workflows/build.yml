@@ -9,6 +9,9 @@ on:
       - master
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-linux:
     runs-on: ubuntu-latest
@@ -27,13 +30,13 @@ jobs:
       - name: Create tarball
         run: |
           cd publish
-          tar czf bootselector-linux-x64.tar.gz linux-x64
+          tar czf bootselector-1.0.0-linux-x64.tar.gz linux-x64
 
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v4
         with:
           name: linux-x64
-          path: publish/bootselector-linux-x64.tar.gz
+          path: publish/bootselector-1.0.0-linux-x64.tar.gz
 
   build-windows:
     runs-on: windows-latest
@@ -51,19 +54,22 @@ jobs:
 
       - name: Create zip
         run: |
-          Compress-Archive -Path publish/win-x64/* -DestinationPath publish/bootselector-win-x64.zip
+          Compress-Archive -Path publish/win-x64/* -DestinationPath publish/bootselector-1.0.0-win-x64.zip
 
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: win-x64
-          path: publish/bootselector-win-x64.zip
+          path: publish/bootselector-1.0.0-win-x64.zip
 
   update-release:
     needs: [build-linux, build-windows]
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download all artifacts
         uses: actions/download-artifact@v4
@@ -73,13 +79,13 @@ jobs:
       - name: Update latest-release folder
         run: |
           mkdir -p latest-release
-          cp artifacts/linux-x64/bootselector-linux-x64.tar.gz latest-release/bootselector-1.0.0-linux-x64.tar.gz
-          cp artifacts/win-x64/bootselector-win-x64.zip latest-release/bootselector-1.0.0-win-x64.zip
+          cp artifacts/linux-x64/bootselector-1.0.0-linux-x64.tar.gz latest-release/
+          cp artifacts/win-x64/bootselector-1.0.0-win-x64.zip latest-release/
 
       - name: Commit updated releases
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add latest-release/
-          git diff --staged --quiet || git commit -m "Update latest release builds"
+          git diff --staged --quiet || git commit -m "Update latest release builds [skip ci]"
           git push
