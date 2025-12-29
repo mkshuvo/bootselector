@@ -15,19 +15,19 @@ A cross-platform boot entry selector for EFI/UEFI systems. Easily switch between
 ### One-liner install:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/mkshuvo/bootselector/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/mkshuvo/bootselector/master/install.sh | sudo bash
 ```
 
 ### Or specify a version:
 
 ```bash
-VERSION=1.0.0 curl -fsSL https://raw.githubusercontent.com/mkshuvo/bootselector/main/install.sh | sudo bash
+VERSION=1.0.0 curl -fsSL https://raw.githubusercontent.com/mkshuvo/bootselector/master/install.sh | sudo bash
 ```
 
 ### Uninstall:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/mkshuvo/bootselector/main/install.sh | sudo bash -s -- --uninstall
+curl -fsSL https://raw.githubusercontent.com/mkshuvo/bootselector/master/install.sh | sudo bash -s -- --uninstall
 ```
 
 ## Manual Installation
@@ -36,7 +36,7 @@ curl -fsSL https://raw.githubusercontent.com/mkshuvo/bootselector/main/install.s
 
 ```bash
 # Download the RPM
-wget https://github.com/mkshuvo/bootselector/raw/main/latest-release/bootselector-1.0.0-1.fc43.x86_64.rpm
+wget https://github.com/mkshuvo/bootselector/raw/master/latest-release/bootselector-1.0.0-1.fc43.x86_64.rpm
 
 # Install
 sudo rpm -i bootselector-1.0.0-1.fc43.x86_64.rpm
@@ -46,7 +46,7 @@ sudo rpm -i bootselector-1.0.0-1.fc43.x86_64.rpm
 
 ```bash
 # Download and extract
-wget https://github.com/mkshuvo/bootselector/raw/main/latest-release/bootselector-1.0.0-linux-x64.tar.gz
+wget https://github.com/mkshuvo/bootselector/raw/master/latest-release/bootselector-1.0.0-linux-x64.tar.gz
 tar xzf bootselector-1.0.0-linux-x64.tar.gz
 cd bootselector-1.0.0-linux-x64
 
@@ -54,12 +54,22 @@ cd bootselector-1.0.0-linux-x64
 ./install.sh
 ```
 
+### Windows
+
+```powershell
+# Download the zip from:
+# https://github.com/mkshuvo/bootselector/raw/master/latest-release/bootselector-1.0.0-win-x64.zip
+
+# Extract and run bootselector.exe as Administrator
+```
+
 ## Download Links
 
-| Platform                    | Download                                                                                                                                     |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Fedora/RHEL** (RPM)       | [bootselector-1.0.0-1.fc43.x86_64.rpm](https://github.com/mkshuvo/bootselector/raw/main/latest-release/bootselector-1.0.0-1.fc43.x86_64.rpm) |
-| **Linux Portable** (tar.gz) | [bootselector-1.0.0-linux-x64.tar.gz](https://github.com/mkshuvo/bootselector/raw/main/latest-release/bootselector-1.0.0-linux-x64.tar.gz)   |
+| Platform                    | Download                                                                                                                                       |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Fedora/RHEL** (RPM)       | [bootselector-1.0.0-1.fc43.x86_64.rpm](https://github.com/mkshuvo/bootselector/raw/master/latest-release/bootselector-1.0.0-1.fc43.x86_64.rpm) |
+| **Linux Portable** (tar.gz) | [bootselector-1.0.0-linux-x64.tar.gz](https://github.com/mkshuvo/bootselector/raw/master/latest-release/bootselector-1.0.0-linux-x64.tar.gz)   |
+| **Windows** (zip)           | [bootselector-1.0.0-win-x64.zip](https://github.com/mkshuvo/bootselector/raw/master/latest-release/bootselector-1.0.0-win-x64.zip)             |
 
 ## Usage
 

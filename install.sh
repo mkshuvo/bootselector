@@ -1,6 +1,6 @@
 #!/bin/bash
 # Boot Selector Installer
-# Usage: curl -fsSL https://raw.githubusercontent.com/mkshuvo/bootselector/main/install.sh | sudo bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/mkshuvo/bootselector/master/install.sh | sudo bash
 #
 # This script downloads and installs Boot Selector from GitHub
 
@@ -107,7 +107,7 @@ install_app() {
     local TEMP_DIR=$(mktemp -d)
     
     # Download from latest-release folder in repo
-    local DOWNLOAD_URL="https://github.com/$REPO/raw/main/latest-release/$APP_NAME-$VERSION-$ARCH.tar.gz"
+    local DOWNLOAD_URL="https://github.com/$REPO/raw/master/latest-release/$APP_NAME-$VERSION-$ARCH.tar.gz"
     
     info "Downloading from: $DOWNLOAD_URL"
     
@@ -230,7 +230,7 @@ main() {
     echo "  Run 'bootselector' or find it in your applications menu."
     echo ""
     echo "  To uninstall, run:"
-    echo "    curl -fsSL https://raw.githubusercontent.com/$REPO/main/install.sh | sudo bash -s -- --uninstall"
+    echo "    curl -fsSL https://raw.githubusercontent.com/$REPO/master/install.sh | sudo bash -s -- --uninstall"
     echo ""
 }
 
